@@ -1,1 +1,32 @@
-
+General list of stuff needed for the project.
+- [ ] Config file from .toml
+- [ ] Initializing network:
+    - [ ] initialize drones
+    - [ ] initialize clients
+    - [ ] initialize servers
+- [ ] Define a good way to structure the project in modules
+- [ ] assembler and disassembler algorithm (the implementation is for the individuals who'll code the client and the server)
+- [ ] Drone behaviour:
+    - [ ] handling packets
+        - [ ] handling messages, with PDR. Send errors and dropped if needed
+        - [ ] handling NACKs and ACKs (basically just forwarding the packet)
+        - [ ] handling Query for the flooding algorithm
+        - [ ] handling QueryResult (just forwarding the packet)
+    - [ ] handling simulation controller commands
+        - [ ] we're waiting for the WG to determine which commands drones need to listen to
+- [ ] Client/Server behaviour:
+    - [ ] implementing the assembler
+    - [ ] implementing the disassembler
+    - [ ] handling packets
+        - [ ] msg fragments need to be stored inside a buffer, when you have all the buffers they're "sent" to the assembler
+        - [ ] NACKs need to be processed, usually resulting in a resent packet and/or an internal "topology" change
+        - [ ] Query needs to have fixed behaviour, will check at WG
+        - [ ] QueryResult needs to update the topology
+    - [ ] handling commands from simulation controller (client only)
+        - [ ] we need to define if user input (like clients sending a message or requesting a file) is done through the simulation controller
+    - [ ] handling received requests and responding with a new message, which is sent through the disassembler
+- [ ] Simulation controller:
+    - [ ] initialization
+    - [ ] GUI for visualizing topology and moving packets
+    - [ ] inputs for sending commands to nodes
+    - [ ] listening to events from nodes and handling them accordingly (usually with a responsive GUI element)
